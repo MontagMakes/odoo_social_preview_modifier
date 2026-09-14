@@ -15,4 +15,17 @@
         </xpath>
     </template>
 
+    <template id="login_layout_poweredby" inherit_id="web.login_layout" name="Login Layout Powered By">
+        <xpath expr="//a[@target='_blank']" position="replace">
+            <t t-set="spm_icp" t-value="request.env['ir.config_parameter'].sudo()"/>
+            <t t-set="spm_show_poweredby" t-value="spm_icp.get_param('spm_show_poweredby', 'False')"/>
+            <t t-if="spm_show_poweredby == 'True'">
+                <a t-att-href="spm_icp.get_param('spm_poweredby_url', 'https://www.odoo.com?utm_source=db&amp;utm_medium=auth')"
+                   target="_blank">
+                    <t t-esc="spm_icp.get_param('spm_poweredby_text', 'Powered by Odoo')"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+
 </odoo>

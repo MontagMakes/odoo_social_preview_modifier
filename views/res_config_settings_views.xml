@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_spm" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.odoo_social_preview_modifier</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="50"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Branding" id="odoo_social_preview_modifier_settings"
+                     string="Branding" name="odoo_social_preview_modifier">
+                    <block title="Login footer" id="spm_login_footer">
+                        <setting string="Show Powered by"
+                                 help="Show or hide the Powered by link on the login page.">
+                            <field name="spm_show_poweredby"/>
+                        </setting>
+                        <setting string="Powered by text"
+                                 help="Custom text for the login footer link."
+                                 invisible="not spm_show_poweredby">
+                            <field name="spm_poweredby_text"/>
+                        </setting>
+                        <setting string="Powered by URL"
+                                 help="Link target for the Powered by footer."
+                                 invisible="not spm_show_poweredby">
+                            <field name="spm_poweredby_url"/>
+                        </setting>
+                    </block>
+                    <block title="User menu" id="spm_user_menu">
+                        <setting string="Show Documentation"
+                                 help="Show or hide Documentation in the user menu.">
+                            <field name="spm_show_documentation"/>
+                        </setting>
+                        <setting string="Documentation label" invisible="not spm_show_documentation">
+                            <field name="spm_documentation_text"/>
+                        </setting>
+                        <setting string="Documentation URL" invisible="not spm_show_documentation">
+                            <field name="spm_documentation_url"/>
+                        </setting>
+
+                        <setting string="Show Support"
+                                 help="Show or hide Support in the user menu.">
+                            <field name="spm_show_support"/>
+                        </setting>
+                        <setting string="Support label" invisible="not spm_show_support">
+                            <field name="spm_support_text"/>
+                        </setting>
+                        <setting string="Support URL" invisible="not spm_show_support">
+                            <field name="spm_support_url"/>
+                        </setting>
+
+                        <setting string="Show My Odoo.com account"
+                                 help="Show or hide My Odoo.com account in the user menu.">
+                            <field name="spm_show_account"/>
+                        </setting>
+                        <setting string="My Account label" invisible="not spm_show_account">
+                            <field name="spm_account_text"/>
+                        </setting>
+                        <setting string="My Account URL" invisible="not spm_show_account">
+                            <field name="spm_account_url"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <function model="ir.config_parameter" name="set_param" eval="('spm_show_poweredby', 'True')"/>
+    <function model="ir.config_parameter" name="set_param" eval="('spm_show_documentation', 'True')"/>
+    <function model="ir.config_parameter" name="set_param" eval="('spm_show_support', 'True')"/>
+    <function model="ir.config_parameter" name="set_param" eval="('spm_show_account', 'True')"/>
+</odoo>
