@@ -72,13 +72,18 @@ class ResConfigSettings(models.TransientModel):
         default="https://accounts.odoo.com/my",
     )
 
-    # Browser tab favicon (the purple Settings browser tab icon)
-    spm_settings_tab_icon = fields.Binary(
-        related="company_id.favicon",
+    # Social / link preview (Open Graph + Twitter — all major platforms)
+    spm_social_preview_title = fields.Char(
+        related="company_id.spm_social_preview_title",
         readonly=False,
-        string="Browser tab icon",
+        string="Preview title",
     )
-    spm_settings_tab_icon_filename = fields.Char(string="Browser tab icon filename")
+    spm_social_preview_logo = fields.Binary(
+        related="company_id.spm_social_preview_logo",
+        readonly=False,
+        string="Preview logo",
+    )
+    spm_social_preview_logo_filename = fields.Char(string="Preview logo filename")
 
     def get_values(self):
         res = super().get_values()

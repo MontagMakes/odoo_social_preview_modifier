@@ -12,16 +12,26 @@
                      string="Branding"
                      name="odoo_social_preview_modifier">
 
-                    <block title="Browser tab" id="spm_settings_tab_block">
-                        <setting string="Browser tab icon"
-                                 help="Changes the favicon on the browser tab (the Settings tab at the very top of the window). Save, then hard-refresh or reopen the tab.">
+                    <block title="Social preview" id="spm_social_preview_block">
+                        <setting string="Preview title"
+                                 help="Title shown in link previews on social apps (WhatsApp, Facebook, LinkedIn, X/Twitter, Slack, etc.). Leave empty to use finpal.pk.">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <field name="spm_social_preview_title"
+                                             placeholder="finpal.pk"
+                                             class="col-lg-8"/>
+                                </div>
+                            </div>
+                        </setting>
+                        <setting string="Preview logo"
+                                 help="Image shown in link previews on social apps (WhatsApp, Facebook, LinkedIn, X/Twitter, Slack, etc.). Leave empty to use the company logo.">
                             <div class="content-group">
                                 <div class="mt16">
-                                    <field name="spm_settings_tab_icon"
-                                             filename="spm_settings_tab_icon_filename"
+                                    <field name="spm_social_preview_logo"
+                                             filename="spm_social_preview_logo_filename"
                                              widget="image"
                                              class="w-25"/>
-                                    <field name="spm_settings_tab_icon_filename" invisible="1"/>
+                                    <field name="spm_social_preview_logo_filename" invisible="1"/>
                                 </div>
                             </div>
                         </setting>
