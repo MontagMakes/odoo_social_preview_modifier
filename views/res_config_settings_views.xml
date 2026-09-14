@@ -7,56 +7,87 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
-                <app data-string="Branding" id="odoo_social_preview_modifier_settings"
-                     string="Branding" name="odoo_social_preview_modifier">
+                <app data-string="Branding"
+                     id="odoo_social_preview_modifier_settings"
+                     string="Branding"
+                     name="odoo_social_preview_modifier">
+
+                    <block title="Browser tab" id="spm_settings_tab_block">
+                        <setting string="Browser tab icon"
+                                 help="Changes the favicon on the browser tab (the Settings tab at the very top of the window). Save, then hard-refresh or reopen the tab.">
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="spm_settings_tab_icon"
+                                             filename="spm_settings_tab_icon_filename"
+                                             widget="image"
+                                             class="w-25"/>
+                                    <field name="spm_settings_tab_icon_filename" invisible="1"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
                     <block title="Login footer" id="spm_login_footer">
                         <setting string="Show Powered by"
                                  help="Show or hide the Powered by link on the login page.">
                             <field name="spm_show_poweredby"/>
-                        </setting>
-                        <setting string="Powered by text"
-                                 help="Custom text for the login footer link."
-                                 invisible="not spm_show_poweredby">
-                            <field name="spm_poweredby_text"/>
-                        </setting>
-                        <setting string="Powered by URL"
-                                 help="Link target for the Powered by footer."
-                                 invisible="not spm_show_poweredby">
-                            <field name="spm_poweredby_url"/>
+                            <div class="content-group" invisible="not spm_show_poweredby">
+                                <div class="row mt16">
+                                    <label for="spm_poweredby_text" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_poweredby_text" class="col-lg-8"/>
+                                </div>
+                                <div class="row">
+                                    <label for="spm_poweredby_url" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_poweredby_url" class="col-lg-8"/>
+                                </div>
+                            </div>
                         </setting>
                     </block>
+
                     <block title="User menu" id="spm_user_menu">
                         <setting string="Show Documentation"
                                  help="Show or hide Documentation in the user menu.">
                             <field name="spm_show_documentation"/>
-                        </setting>
-                        <setting string="Documentation label" invisible="not spm_show_documentation">
-                            <field name="spm_documentation_text"/>
-                        </setting>
-                        <setting string="Documentation URL" invisible="not spm_show_documentation">
-                            <field name="spm_documentation_url"/>
+                            <div class="content-group" invisible="not spm_show_documentation">
+                                <div class="row mt16">
+                                    <label for="spm_documentation_text" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_documentation_text" class="col-lg-8"/>
+                                </div>
+                                <div class="row">
+                                    <label for="spm_documentation_url" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_documentation_url" class="col-lg-8"/>
+                                </div>
+                            </div>
                         </setting>
 
                         <setting string="Show Support"
                                  help="Show or hide Support in the user menu.">
                             <field name="spm_show_support"/>
-                        </setting>
-                        <setting string="Support label" invisible="not spm_show_support">
-                            <field name="spm_support_text"/>
-                        </setting>
-                        <setting string="Support URL" invisible="not spm_show_support">
-                            <field name="spm_support_url"/>
+                            <div class="content-group" invisible="not spm_show_support">
+                                <div class="row mt16">
+                                    <label for="spm_support_text" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_support_text" class="col-lg-8"/>
+                                </div>
+                                <div class="row">
+                                    <label for="spm_support_url" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_support_url" class="col-lg-8"/>
+                                </div>
+                            </div>
                         </setting>
 
                         <setting string="Show My Odoo.com account"
                                  help="Show or hide My Odoo.com account in the user menu.">
                             <field name="spm_show_account"/>
-                        </setting>
-                        <setting string="My Account label" invisible="not spm_show_account">
-                            <field name="spm_account_text"/>
-                        </setting>
-                        <setting string="My Account URL" invisible="not spm_show_account">
-                            <field name="spm_account_url"/>
+                            <div class="content-group" invisible="not spm_show_account">
+                                <div class="row mt16">
+                                    <label for="spm_account_text" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_account_text" class="col-lg-8"/>
+                                </div>
+                                <div class="row">
+                                    <label for="spm_account_url" class="col-lg-3 o_light_label"/>
+                                    <field name="spm_account_url" class="col-lg-8"/>
+                                </div>
+                            </div>
                         </setting>
                     </block>
                 </app>

@@ -8,7 +8,6 @@ class ResConfigSettings(models.TransientModel):
 
     # Match school_core: Boolean + config_parameter + default=False,
     # and persist via get_values/set_values as strings "True"/"False".
-    # (set_param deletes the key on Python False; string "False" keeps it.)
     spm_show_poweredby = fields.Boolean(
         string="Show Powered by",
         config_parameter="spm_show_poweredby",
@@ -72,6 +71,14 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="spm_account_url",
         default="https://accounts.odoo.com/my",
     )
+
+    # Browser tab favicon (the purple Settings browser tab icon)
+    spm_settings_tab_icon = fields.Binary(
+        related="company_id.favicon",
+        readonly=False,
+        string="Browser tab icon",
+    )
+    spm_settings_tab_icon_filename = fields.Char(string="Browser tab icon filename")
 
     def get_values(self):
         res = super().get_values()
