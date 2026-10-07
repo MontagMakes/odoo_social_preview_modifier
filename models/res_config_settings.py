@@ -37,7 +37,7 @@ class ResConfigSettings(models.TransientModel):
     spm_documentation_url = fields.Char(
         string="Documentation URL",
         config_parameter="spm_documentation_url",
-        default="https://www.odoo.com/documentation/18.0",
+        default="https://www.odoo.com/documentation/20.0",
     )
 
     spm_show_support = fields.Boolean(
@@ -88,36 +88,16 @@ class ResConfigSettings(models.TransientModel):
     def get_values(self):
         res = super().get_values()
         icp = self.env["ir.config_parameter"].sudo()
-        res["spm_show_poweredby"] = (
-            icp.get_param("spm_show_poweredby", "False") == "True"
-        )
-        res["spm_show_documentation"] = (
-            icp.get_param("spm_show_documentation", "False") == "True"
-        )
-        res["spm_show_support"] = (
-            icp.get_param("spm_show_support", "False") == "True"
-        )
-        res["spm_show_account"] = (
-            icp.get_param("spm_show_account", "False") == "True"
-        )
+        res["spm_show_poweredby"] = icp.get_bool("spm_show_poweredby")
+        res["spm_show_documentation"] = icp.get_bool("spm_show_documentation")
+        res["spm_show_support"] = icp.get_bool("spm_show_support")
+        res["spm_show_account"] = icp.get_bool("spm_show_account")
         return res
 
     def set_values(self):
         super().set_values()
         icp = self.env["ir.config_parameter"].sudo()
-        icp.set_param(
-            "spm_show_poweredby",
-            "True" if self.spm_show_poweredby else "False",
-        )
-        icp.set_param(
-            "spm_show_documentation",
-            "True" if self.spm_show_documentation else "False",
-        )
-        icp.set_param(
-            "spm_show_support",
-            "True" if self.spm_show_support else "False",
-        )
-        icp.set_param(
-            "spm_show_account",
-            "True" if self.spm_show_account else "False",
-        )
+        icp.set_bool("spm_show_poweredby", self.spm_show_poweredby)
+        icp.set_bool("spm_show_documentation", self.spm_show_documentation)
+        icp.set_bool("spm_show_support", self.spm_show_support)
+        icp.set_bool("spm_show_account", self.spm_show_account)

@@ -7,7 +7,7 @@ import { session } from "@web/session";
 const userMenuRegistry = registry.category("user_menuitems");
 
 function documentationItem(env) {
-    const url = session.spm_documentation_url || "https://www.odoo.com/documentation/18.0";
+    const url = session.spm_documentation_url || "https://www.odoo.com/documentation/20.0";
     const label = session.spm_documentation_text || "Documentation";
     return {
         type: "item",
