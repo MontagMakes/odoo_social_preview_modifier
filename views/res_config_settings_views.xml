@@ -37,6 +37,21 @@
                         </setting>
                     </block>
 
+                    <block title="Browser tab icon" id="spm_favicon_block">
+                        <setting string="Favicon"
+                                 help="Icon shown in the browser tab for the backend and the login page. A square PNG works best (32x32 or 64x64). Leave empty to keep the default Odoo icon.">
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="spm_favicon"
+                                           filename="spm_favicon_filename"
+                                           widget="image"
+                                           class="w-25"/>
+                                    <field name="spm_favicon_filename" invisible="1"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+
                     <block title="Login footer" id="spm_login_footer">
                         <setting string="Show Powered by"
                                  help="Show or hide the Powered by link on the login page.">

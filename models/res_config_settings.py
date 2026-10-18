@@ -85,6 +85,15 @@ class ResConfigSettings(models.TransientModel):
     )
     spm_social_preview_logo_filename = fields.Char(string="Preview logo filename")
 
+    # Browser tab favicon (backend + login page). Stored on the company record,
+    # exactly like the preview logo above.
+    spm_favicon = fields.Binary(
+        related="company_id.favicon",
+        readonly=False,
+        string="Favicon",
+    )
+    spm_favicon_filename = fields.Char(string="Favicon filename")
+
     def get_values(self):
         res = super().get_values()
         icp = self.env["ir.config_parameter"].sudo()

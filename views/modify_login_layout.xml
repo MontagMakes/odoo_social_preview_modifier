@@ -3,8 +3,16 @@
 
     <template id="web_layout_favicon" inherit_id="web.layout" name="Browser Tab Favicon">
         <xpath expr="//link[@rel='shortcut icon']" position="before">
-            <t t-set="x_icon"
-               t-value="x_icon or '/web/image/res.company/%s/favicon' % (request.env.company.id)"/>
+            <!-- Only fill x_icon when no other template already set it. website.layout
+                 and webclient_scoped_app both provide their own value, and whichever
+                 runs first must win. -->
+            <t t-if="not x_icon">
+                <t t-set="spm_company" t-value="request.env.company.sudo()"/>
+                <!-- Leave x_icon falsy when no icon is uploaded, so web.layout falls
+                     back to its own default instead of serving the image placeholder. -->
+                <t t-set="x_icon"
+                   t-value="'/web/image/res.company/%s/favicon?unique=%s' % (spm_company.id, spm_company.spm_favicon_token) if spm_company.favicon else False"/>
+            </t>
         </xpath>
     </template>
 
